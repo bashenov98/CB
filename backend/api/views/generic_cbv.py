@@ -8,11 +8,10 @@ class ReviewList(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return Review.objects.for_user(self.request.user)
-    #
+        return Review.objects.filter(created_by = self.request.user)
+
     def perform_create(self, serializer):
         serializer.save(created_by= self.request.user)
-
 
 
 class CompanyList(generics.ListCreateAPIView):

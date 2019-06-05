@@ -6,7 +6,7 @@ class ReviewFilter(filters.FilterSet):
     title = filters.CharFilter()
     summary = filters.CharFilter()
     ip_address = filters.CharFilter()
-    submissionDate = filters.DateFilter()
+    submission_date = filters.DateFilter()
 
     class Meta:
         model = Review

@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email',)
 
+
 class CompanySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
@@ -21,19 +22,19 @@ class CompanySerializer(serializers.ModelSerializer):
         company.save()
         return company
 
+
 class ReviewSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField()
     rating = serializers.IntegerField()
     ip_address = serializers.CharField()
     summary = serializers.CharField()
-    submissionDate = serializers.DateField()
+    submission_date = serializers.DateField()
     created_by = UserSerializer(read_only=True)
 
     class Meta:
         model = Review
         fields = '__all__'
-
 
     def create(self, validated_data):
         review = Review(**validated_data)
